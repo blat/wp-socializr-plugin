@@ -1,0 +1,10 @@
+<?php
+
+// Facebook app
+define("CONSUMER_KEY", "");
+define("CONSUMER_SECRET", "");
+
+// Twitter app
+define("CLIENT_ID", "");
+define("CLIENT_SECRET", "");
+
