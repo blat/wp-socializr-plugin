@@ -43,7 +43,7 @@ class TwitterButton extends SocializeButton {
     );
 
     public function getCode() {
-        if (!$this->_enable() || ($username = $this->username && empty($username))) return;
+        if (!$this->_enable()) return;
         return '<p style="' . $this->style . '"><a href="http://twitter.com/share" class="twitter-share-button" data-url="' . $this->url . '" data-text="' . $this->title . '" data-count="' . $this->count . '" data-via="' . $this->username . '" data-lang="' . $this->language . '">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></p>';
     }
 

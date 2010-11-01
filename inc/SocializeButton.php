@@ -55,7 +55,8 @@ abstract class SocializeButton {
                 $value = get_the_title();
                 break;
             default:
-                $value = isset($this->_options[$key]) ? get_option($this->_base . '_' . $key, $this->_options[$key]['default']) : null;
+                $default_value = isset($this->_options[$key]) ? $this->_options[$key]['default'] : null;
+                $value = get_option($this->_base . '_' . $key, $default_value);
         }
         return $value;
     }
