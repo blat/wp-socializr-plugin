@@ -33,6 +33,7 @@ class TwitterWidget extends SocializeWidget {
         parent::widget($args, $instance);
         extract($args);
 
+        echo $before_widget;
         if ($this->_title) echo $before_title . $this->_title . $after_title;
         echo "<div style='$this->_style'>";
         echo "<script src='http://widgets.twimg.com/j/2/widget.js'></script>";
