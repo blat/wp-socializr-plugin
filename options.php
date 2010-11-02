@@ -8,7 +8,9 @@ echo '<h2>Socialize</h2>';
 
 echo '<ul class="subsubsub">';
 echo '<li><a href="' . SETTINGS_URL . '"' . (!$current ? ' class="current"' : '') . '>General</a></li>';
+global $allowed_services;
 foreach ($allowed_services as $service):
+    global ${strtolower($service)};
     if (!${strtolower($service)}->isLogged()) continue;
     $class = $service . 'Button';
     $button = new $class();
@@ -25,8 +27,11 @@ wp_nonce_field('update-options');
 $elements = array();
 
 if (!isset($currentButton)):
-    echo $facebook->form($elements);
-    echo $twitter->form($elements);
+    global $allowed_services;
+    foreach ($allowed_services as $service):
+        global ${strtolower($service)};
+        echo ${strtolower($service)}->form($elements);
+    endforeach;
 else:
     echo $currentButton->form($elements);
 endif;

@@ -1,21 +1,23 @@
 <?php
 
+define('ROOT_DIR', dirname(__FILE__));
+define('PLUGIN_DIR', basename(ROOT_DIR));
+
 define("PLUGIN_ID", "socialize");
 define("BASE_URL", "http://" . $_SERVER['SERVER_NAME']);
-define("PLUGIN_URL", BASE_URL . "/wp-content/plugins/socialize/");
+define("PLUGIN_URL", BASE_URL . "/wp-content/plugins/" . PLUGIN_DIR . "/");
 define("SETTINGS_URL", BASE_URL . "/wp-admin/options-general.php?page=" . PLUGIN_ID);
 
-define('ROOT_DIR', dirname(__FILE__));
 define('LIB_DIR', ROOT_DIR . '/lib');
 define('INC_DIR', ROOT_DIR . '/inc');
 
 require_once ROOT_DIR . '/config.php';
 
-require_once INC_DIR . '/Twitter.php';
-$twitter = new Twitter();
-
-require_once INC_DIR . '/Facebook.php';
-$facebook = new Facebook();
+$allowed_services = array('Facebook', 'Twitter');
+foreach ($allowed_services as $service) {
+    require_once INC_DIR . '/' . $service . '.php';
+    ${strtolower($service)} = new $service();
+}
 
 
 ////////////////////////////////

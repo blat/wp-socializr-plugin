@@ -21,7 +21,6 @@ function socialize_admin_menu() {
 }
 
 function socialize_manage_options() {
-    global $twitter, $facebook;
     if (!current_user_can('manage_options'))  {
         wp_die( __('You do not have sufficient permissions to access this page.') );
     }
@@ -29,7 +28,6 @@ function socialize_manage_options() {
 }
 
 function socialize_share() {
-    global $twitter, $facebook;
     if (!current_user_can('publish_posts')) {
       wp_die( __('You do not have sufficient permissions to access this page.') );
     }
@@ -43,10 +41,11 @@ function socialize_share() {
 add_action('widgets_init', 'socialize_widgets_init');
 
 function socialize_widgets_init() {
-    require_once INC_DIR . '/TwitterWidget.php';
-    register_widget('TwitterWidget');
-    require_once INC_DIR . '/FacebookWidget.php';
-    register_widget('FacebookWidget');
+    global $allowed_services;
+    foreach ($allowed_services as $service) {
+        require_once INC_DIR . '/' . $service . 'Widget.php';
+        register_widget($service . 'Widget');
+    }
 }
 
 
@@ -56,10 +55,16 @@ function socialize_widgets_init() {
 add_filter('the_content', 'socialize_the_content');
 
 function socialize_the_content($content) {
-    if (!is_single()) return $content;
-    $twitter_button  = new TwitterButton();
-    $facebook_button = new FacebookButton();
-    return $twitter_button->getCode() . $facebook_button->getCode() . $content;
+    $result = $content;
+    if (is_single()) {
+        global $allowed_services;
+        foreach ($allowed_services as $service) {
+            $class = $service . 'Button';
+            $button = new $class();
+            $result = $button->getCode() . $result;
+        }
+    }
+    return $result;
 }
 
 
@@ -90,9 +95,11 @@ function socialize_publish_post($id) {
     $enable = get_post_meta($id, 'enable_share');
     if ($enable && $post->post_status != 'publish') {
         $the_post = get_post($id);
-        global $twitter, $facebook;
-        $twitter->sharePost($the_post);
-        $facebook->sharePost($the_post);
+        global $allowed_services;
+        foreach ($allowed_services as $service) {
+            global ${strtolower($service)};
+            ${strtolower($service)}->sharePost($the_post);
+        }
     }
     return $id;
 }

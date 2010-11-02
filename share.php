@@ -4,10 +4,12 @@ $url     = !empty($_POST['url'])     ? $_POST['url']     : false;
 $comment = !empty($_POST['comment']) ? $_POST['comment'] : false;
 
 if ($url && $comment && ($scheme = parse_url($url, PHP_URL_SCHEME)) && !empty($scheme)) {
-    global $facebook, $twitter;
 
-    $twitter->share($url, $comment);
-    $facebook->share($url, $comment);
+    global $allowed_services;
+    foreach ($allowed_services as $service):
+        global ${strtolower($service)};
+        ${strtolower($service)}->share($url, $comment);
+    endforeach;
 
     $result = true;
     unset($url, $comment);
