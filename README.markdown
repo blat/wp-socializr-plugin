@@ -9,7 +9,7 @@ features
 * Adding a widget [Facebook Like Box](http://developers.facebook.com/docs/reference/plugins/like-box).
 * Adding a widget [Twitter](http://twitter.com/about/resources/widgets).
 * Publishing automatically all new post on your Facebook wall and your Twitter timeline.
-* Adding a new page in WordPress administration to share link (with comment)  on your Facebook wall and your Twitter timeline.
+* Adding a new page in WordPress administration to share link (with comment) on your Facebook wall and your Twitter timeline.
 
 setup
 ------------------
@@ -25,16 +25,26 @@ setup
 
 3. Go to [facebook.com](http://www.facebook.com/developers/createapp.php) and create a new application. Be careful when you fill **site url**. A wrong value can block the authentification.
 
-4. Update config.php to copy **Application ID** as **CONSUMER_KEY** and **Application Secret** as **CONSUMER_SECRET**.
+4. Update `config.php` to copy **Application ID** as **CONSUMER_KEY** and **Application Secret** as **CONSUMER_SECRET**.
 
 5. Go to [twitter.com](http://twitter.com/apps/new) and create a new application. Choose _browser_ as **Application Type** and _Read & Write_ as **Default Access type**.
 
-6. Update config.php to copy **Consumer key** as **CLIENT_ID** and **Cosumer secret** as **CLIENT_SECRET**.
+6. Update `config.php` to copy **Consumer key** as **CLIENT_ID** and **Cosumer secret** as **CLIENT_SECRET**.
 
 7. Go to [plugin manager](http://www.yoursite.com/wp-admin/plugins.php) and activate the new plugin.
 
-8. Go to [the Socialize settings page](http://www.yoursite.com/wp-admin/options-general.php?page=socialize) and link your blog with your Facebook page and your Twitter account.
+8. Go to [Socialize settings page](http://www.yoursite.com/wp-admin/options-general.php?page=socialize) and link your blog with your Facebook page and your Twitter account.
 
+settings
+------------------
+
+![General settings](http://pix.toile-libre.org/upload/original/1288810011.png)
+
+![Tweet Button settings](http://pix.toile-libre.org/upload/original/1288810087.png)
+
+![Facebook Like Button settings](http://pix.toile-libre.org/upload/original/1288810056.png)
+
+![Twitter Widget settings](http://pix.toile-libre.org/upload/original/1288810196.png) ![Facebook Like Box settings](http://pix.toile-libre.org/upload/original/1288810145.png)
 
 mit licence
 ------------------
