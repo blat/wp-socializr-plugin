@@ -25,11 +25,11 @@ setup
 
 3. Go to [facebook.com](http://www.facebook.com/developers/createapp.php) and create a new application. Be careful when you fill **site url**. A wrong value can block the authentification.
 
-4. Update `config.php` to copy **Application ID** as **CONSUMER_KEY** and **Application Secret** as **CONSUMER_SECRET**.
+4. Update `config.php` to copy **Application ID** as **CLIENT_ID** and **Application Secret** as **CLIENT_SECRET**.
 
 5. Go to [twitter.com](http://twitter.com/apps/new) and create a new application. Choose _browser_ as **Application Type** and _Read & Write_ as **Default Access type**.
 
-6. Update `config.php` to copy **Consumer key** as **CLIENT_ID** and **Cosumer secret** as **CLIENT_SECRET**.
+6. Update `config.php` to copy **Consumer key** as **CONSUMER_KEY** and **Cosumer secret** as **CONSUMER_SECRET**.
 
 7. Go to [plugin manager](http://www.yoursite.com/wp-admin/plugins.php) and activate the new plugin.
 
