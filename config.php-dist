@@ -8,3 +8,5 @@ define("CONSUMER_SECRET", "");
 define("CLIENT_ID", "");
 define("CLIENT_SECRET", "");
 
+// Label to "share" button on Facebook publication
+define("SHARE_LABEL", "Share");

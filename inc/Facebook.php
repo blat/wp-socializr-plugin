@@ -83,11 +83,16 @@ class Facebook extends Socialize {
         $page_id = get_option('facebook_page_id');
         $access_token = get_option('page_access_token');
         if (!empty($page_id) && !empty($access_token)) {
+            $data = array(
+                'link' => $url,
+                'message' => $description,
+                'actions' => '{"name": "' . SHARE_LABEL . '", "link": "http://www.facebook.com/sharer.php?u=' . urlencode($url) . '"}'
+            );
             $opts = array('http' =>
                 array(
                     'method'  => 'POST',
                     'header'  => 'Content-type: application/x-www-form-urlencoded',
-                    'content' => "link=$url&message=$description"
+                    'content' => http_build_query($data)
                 )
             );
             $context  = stream_context_create($opts);
