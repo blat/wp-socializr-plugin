@@ -70,7 +70,7 @@ class Twitter extends Socialize {
         $status .= '] ';
         $status .= $post->post_title;
         foreach (get_the_tags($post->ID) as $tag) {
-            $status .= ' #'. $tag->name;
+            $status .= ' #'. strtolower(str_replace(' ', '', $tag->name));
         }
         $this->share(get_permalink($post->ID), $status);
     }
