@@ -76,18 +76,29 @@ class Facebook extends Socialize {
     }
 
     public function sharePost($post) {
-        $this->share(get_permalink($post->ID), null);
+        $data = array(
+            'link' => get_permalink($post->ID),
+            'name' => $post->post_title,
+            'picture' => wp_get_attachment_url(get_post_thumbnail_id($post->ID))
+        );
+        $this->_share($data);
     }
 
     public function share($url, $description) {
+        $data = array(
+            'link' => $url,
+            'message' => $description
+        );
+        $this->_share($data);
+    }
+
+    private function _share($data) {
         $page_id = get_option('facebook_page_id');
         $access_token = get_option('page_access_token');
         if (!empty($page_id) && !empty($access_token)) {
-            $data = array(
-                'link' => $url,
-                'message' => $description,
-                'actions' => '{"name": "' . SHARE_LABEL . '", "link": "http://www.facebook.com/sharer.php?u=' . urlencode($url) . '"}'
-            );
+            if (!empty($data['link'])) {
+                $data['actions'] = '{"name": "' . SHARE_LABEL . '", "link": "http://www.facebook.com/sharer.php?u=' . urlencode($data['link']) . '"}';
+            }
             $opts = array('http' =>
                 array(
                     'method'  => 'POST',
