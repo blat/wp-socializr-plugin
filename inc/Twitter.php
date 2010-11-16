@@ -63,11 +63,14 @@ class Twitter extends Socialize {
     }
 
     public function sharePost($post) {
-        $status  = '[';
+        $status = '';
+        $tmp = array();
         foreach((get_the_category($post->ID)) as $cat) {
-            $status .= $cat->name;
+            $tmp[] = $cat->name;
         }
-        $status .= '] ';
+        if (!empty($tmp)) {
+            $status .= '[' . implode('&', $tmp) . ']';
+        }
         $status .= $post->post_title;
         foreach (get_the_tags($post->ID) as $tag) {
             $status .= ' #'. strtolower(str_replace(' ', '', $tag->name));
