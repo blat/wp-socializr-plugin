@@ -69,7 +69,7 @@ class Twitter extends Socialize {
             $tmp[] = $cat->name;
         }
         if (!empty($tmp)) {
-            $status .= '[' . implode('&', $tmp) . ']';
+            $status .= '[' . implode('&', $tmp) . '] ';
         }
         $status .= $post->post_title;
         foreach (get_the_tags($post->ID) as $tag) {
