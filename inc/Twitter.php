@@ -81,7 +81,7 @@ class Twitter extends Socialize {
     public function share($url, $description) {
         $access_token = get_option('access_token');
         if (!empty($access_token) && !empty($access_token['oauth_token']) && !empty($access_token['oauth_token_secret'])) {
-            $status = $description . " " . shortify($url);
+            $status = substr($description, 0, 120) . " " . shortify($url);
             $oauth = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
             $oauth->post('statuses/update', array('status' => $status));
         }
