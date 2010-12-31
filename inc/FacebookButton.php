@@ -4,8 +4,8 @@ require_once INC_DIR . '/SocializeButton.php';
 
 class FacebookButton extends SocializeButton {
 
-    public $_base = 'facebook_like';
-    public $_base_label = 'Facebook Like Button';
+    public $_base = 'facebook';
+    public $_base_label = 'Facebook Share';
 
     protected $_options = array(
         'enable' => array(
@@ -13,48 +13,21 @@ class FacebookButton extends SocializeButton {
             'label' => 'Enable',
             'default' => ''
         ),
-        'layout' => array(
+        'type' => array(
             'type' => 'select',
             'label' => 'Layout',
             'options' => array(
-                'standard'      => 'Standard',
-                'button_count'  => 'Button count',
-                'box_count'     => 'Box count'
+                'box_count'    => 'Box count',
+                'button_count' => 'Button count',
+                'icon_link'    => 'Icon link',
+                'icon'         => 'Icon'
             ),
-            'default' => 'standard'
+            'default' => 'button_count'
         ),
-        'show_faces' => array(
-            'type' => 'checkbox',
-            'label' => 'Show Faces',
-            'default' => 'true'
-        ),
-        'width' => array(
+        'label' => array(
             'type' => 'text',
-            'label' => 'Width',
-            'default' => '450'
-        ),
-        'height' => array(
-            'type' => 'text',
-            'label' => 'Height',
-            'default' => '80'
-        ),
-        'action' => array(
-            'type' => 'select',
-            'label' => 'Verb To Display',
-            'options' => array(
-                'like'          => 'Like',
-                'recommend'     => 'Recommend'
-            ),
-            'default' => 'like'
-        ),
-        'colorscheme' => array(
-            'type' => 'select',
-            'label' => 'Color Scheme',
-            'options' => array(
-                'light'         => 'Light',
-                'dark'          => 'Dark'
-            ),
-            'default' => 'light'
+            'label' => 'Label',
+            'default' => 'Share'
         ),
         'style' => array(
             'type' => 'text',
@@ -65,7 +38,7 @@ class FacebookButton extends SocializeButton {
 
     public function getCode() {
         if (!$this->_enable()) return;
-        return '<p style="' . $this->style . '"><iframe src="http://www.facebook.com/plugins/like.php?href=' . urlencode($this->url) . '&amp;layout=' . $this->layout . '&amp;show_faces=' . ($this->show_faces ? 'true' : 'false') . '&amp;width=' . $this->width . '&amp;action=' . $this->action . '&amp;colorscheme=' . $this->colorscheme . '&amp;height=' . $this->height . '" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:' . $this->width . 'px; height:' . $this->height . 'px;" allowTransparency="true"></iframe></p>';
+        return '<p style="' . $this->style . '"><a name="fb_share" type="' . $this->type . '" share_url="' . $this->url . '">' . $this->label . '</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></p>';
     }
 
 }
