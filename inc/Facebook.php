@@ -6,16 +6,11 @@ require_once INC_DIR . '/FacebookButton.php';
 class Facebook extends Socializr {
 
     public function signin() {
-        $callback_url = urlencode(PLUGIN_URL . "/auth.php?service=Facebook&action=signin");
-
-        if (!isset($_GET['code'])) {
-            $url = "https://graph.facebook.com/oauth/authorize?client_id=" . CLIENT_ID . "&redirect_uri=$callback_url&scope=manage_pages,publish_stream,offline_access";
+        if (!isset($_GET['access_token'])) {
+            $url = 'http://socializr.blizzart.net/facebook.php?callback_url=' . urlencode(PLUGIN_URL . "/auth.php?service=Facebook&action=signin");
             header("Location: $url");
-
         } else {
-            $code = $_GET['code'];
-            $url = "https://graph.facebook.com/oauth/access_token?client_id=" . CLIENT_ID . "&redirect_uri=$callback_url&client_secret=" . CLIENT_SECRET . "&code=$code";
-            $access_token = file_get_contents($url);
+            $access_token = $_GET['access_token'];
             if (!empty($access_token)) header("Location: " . SETTINGS_URL . "&access_token=$access_token");
         }
     }

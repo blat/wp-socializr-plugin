@@ -19,21 +19,9 @@ setup
         git clone git://github.com/blat/wp-socializr-plugin.git
         mv wp-socializr-plugin socializr
 
-2. Initialize configuration
-        cd socializr
-        cp config.php-dist config.php
+2. Go to [plugin manager](http://www.yoursite.com/wp-admin/plugins.php) and activate the new plugin.
 
-3. Go to [facebook.com](http://www.facebook.com/developers/createapp.php) and create a new application. Be careful when you fill **site url**. A wrong value can block the authentification.
-
-4. Update `config.php` to copy **Application ID** as **CLIENT_ID** and **Application Secret** as **CLIENT_SECRET**.
-
-5. Go to [twitter.com](http://twitter.com/apps/new) and create a new application. Choose _browser_ as **Application Type** and _Read & Write_ as **Default Access type**.
-
-6. Update `config.php` to copy **Consumer key** as **CONSUMER_KEY** and **Cosumer secret** as **CONSUMER_SECRET**.
-
-7. Go to [plugin manager](http://www.yoursite.com/wp-admin/plugins.php) and activate the new plugin.
-
-8. Go to [Socializr settings page](http://www.yoursite.com/wp-admin/options-general.php?page=socializr) and link your blog with your Facebook page and your Twitter account.
+3. Go to [Socializr settings page](http://www.yoursite.com/wp-admin/options-general.php?page=socializr) and link your blog with your Facebook page and your Twitter account.
 
 settings
 ------------------
