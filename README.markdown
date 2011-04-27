@@ -1,6 +1,6 @@
-Socialize
+Socializr
 ===============
-Socialize is a WordPress plugin which allow you to link your blog with a Facebook page and a Twitter account.
+Socializr is a WordPress plugin which allow you to link your blog with a Facebook page and a Twitter account.
 
 features
 ------------------
@@ -16,11 +16,11 @@ setup
 
 1. Download plugin
         cd wp-content/plugin
-        git clone git://github.com/blat/wp-socialize-plugin.git
-        mv wp-socialize-plugin socialize
+        git clone git://github.com/blat/wp-socializr-plugin.git
+        mv wp-socializr-plugin socializr
 
 2. Initialize configuration
-        cd socialize
+        cd socializr
         cp config.php-dist config.php
 
 3. Go to [facebook.com](http://www.facebook.com/developers/createapp.php) and create a new application. Be careful when you fill **site url**. A wrong value can block the authentification.
@@ -33,7 +33,7 @@ setup
 
 7. Go to [plugin manager](http://www.yoursite.com/wp-admin/plugins.php) and activate the new plugin.
 
-8. Go to [Socialize settings page](http://www.yoursite.com/wp-admin/options-general.php?page=socialize) and link your blog with your Facebook page and your Twitter account.
+8. Go to [Socializr settings page](http://www.yoursite.com/wp-admin/options-general.php?page=socializr) and link your blog with your Facebook page and your Twitter account.
 
 settings
 ------------------

@@ -1,10 +1,10 @@
 <?php
 
-require_once INC_DIR . '/Socialize.php';
+require_once INC_DIR . '/Socializr.php';
 require_once LIB_DIR . '/twitteroauth.php';
 require_once INC_DIR . '/TwitterButton.php';
 
-class Twitter extends Socialize {
+class Twitter extends Socializr {
 
     public function signin() {
         if (!empty($_SERVER['HTTP_REFERER'])) {

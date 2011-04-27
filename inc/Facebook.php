@@ -1,9 +1,9 @@
 <?php
 
-require_once INC_DIR . '/Socialize.php';
+require_once INC_DIR . '/Socializr.php';
 require_once INC_DIR . '/FacebookButton.php';
 
-class Facebook extends Socialize {
+class Facebook extends Socializr {
 
     public function signin() {
         $callback_url = urlencode(PLUGIN_URL . "/auth.php?service=Facebook&action=signin");

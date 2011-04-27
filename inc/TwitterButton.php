@@ -1,8 +1,8 @@
 <?php
 
-require_once INC_DIR . '/SocializeButton.php';
+require_once INC_DIR . '/SocializrButton.php';
 
-class TwitterButton extends SocializeButton {
+class TwitterButton extends SocializrButton {
 
     public $_base = 'twitter';
     public $_base_label = 'Tweet Button';

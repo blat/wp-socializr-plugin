@@ -1,8 +1,8 @@
 <?php
 
-require_once INC_DIR . '/SocializeWidget.php';
+require_once INC_DIR . '/SocializrWidget.php';
 
-class FacebookWidget extends SocializeWidget {
+class FacebookWidget extends SocializrWidget {
 
     protected $_options = array(
         'title'        => array('type' => 'text',     'label' => 'Title',             'default' => 'Facebook'),

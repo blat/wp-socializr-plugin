@@ -1,8 +1,8 @@
 <?php
 
-require_once INC_DIR . '/SocializeWidget.php';
+require_once INC_DIR . '/SocializrWidget.php';
 
-class TwitterWidget extends SocializeWidget {
+class TwitterWidget extends SocializrWidget {
 
     protected $_options = array(
         'title'             => array('type' => 'text',     'label' => 'Title',                 'default' => 'Twitter'),

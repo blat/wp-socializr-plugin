@@ -18,7 +18,7 @@ if ($url && $comment && ($scheme = parse_url($url, PHP_URL_SCHEME)) && !empty($s
 ?>
 
 <div class="wrap">
-    <h2>Socialize</h2>
+    <h2>Socializr</h2>
 
     <?php if ($result): ?>
          <div class="updated">

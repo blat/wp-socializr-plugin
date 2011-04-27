@@ -4,7 +4,7 @@ require_once dirname(__FILE__) . '/auth.php';
 $current = isset($_GET['tab']) ? $_GET['tab'] : false;
 
 echo '<div class="wrap">';
-echo '<h2>Socialize</h2>';
+echo '<h2>Socializr</h2>';
 
 echo '<ul class="subsubsub">';
 echo '<li><a href="' . SETTINGS_URL . '"' . (!$current ? ' class="current"' : '') . '>General</a></li>';

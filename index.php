@@ -1,8 +1,8 @@
 <?php
 
 /*
-Plugin Name: Socialize
-Plugin URI: http://www.github.com/blat/wp-socialize-plugin/
+Plugin Name: Socializr
+Plugin URI: http://www.github.com/blat/wp-socializr-plugin/
 Version: 1.0
 Author: Mickael BLATIERE
 Author URI: http://www.blizzart.net/
@@ -14,20 +14,20 @@ require_once dirname(__FILE__) . '/common.php';
 ////////////////////////////////
 // ADMIN
 
-add_action('admin_menu', 'socialize_admin_menu');
-function socialize_admin_menu() {
-    add_options_page('Socialize Options', 'Socialize', 'manage_options', PLUGIN_ID, 'socialize_manage_options');
-    add_menu_page('Socialize', 'Socialize', 'publish_posts', PLUGIN_ID . '-share', 'socialize_share');
+add_action('admin_menu', 'socializr_admin_menu');
+function socializr_admin_menu() {
+    add_options_page('Socializr Options', 'Socializr', 'manage_options', PLUGIN_ID, 'socializr_manage_options');
+    add_menu_page('Socializr', 'Socializr', 'publish_posts', PLUGIN_ID . '-share', 'socializr_share');
 }
 
-function socialize_manage_options() {
+function socializr_manage_options() {
     if (!current_user_can('manage_options'))  {
         wp_die( __('You do not have sufficient permissions to access this page.') );
     }
     include dirname(__FILE__) . '/options.php';
 }
 
-function socialize_share() {
+function socializr_share() {
     if (!current_user_can('publish_posts')) {
       wp_die( __('You do not have sufficient permissions to access this page.') );
     }
@@ -38,9 +38,9 @@ function socialize_share() {
 ////////////////////////////////
 // WIDGETS
 
-add_action('widgets_init', 'socialize_widgets_init');
+add_action('widgets_init', 'socializr_widgets_init');
 
-function socialize_widgets_init() {
+function socializr_widgets_init() {
     global $allowed_services;
     foreach ($allowed_services as $service) {
         require_once INC_DIR . '/' . $service . 'Widget.php';
@@ -52,9 +52,9 @@ function socialize_widgets_init() {
 ////////////////////////////////
 // BUTTONS
 
-add_filter('the_content', 'socialize_the_content');
+add_filter('the_content', 'socializr_the_content');
 
-function socialize_the_content($content) {
+function socializr_the_content($content) {
     $result = $content;
     if (is_single()) {
         global $allowed_services;
@@ -71,17 +71,17 @@ function socialize_the_content($content) {
 ////////////////////////////////
 // ACTIONS HOOKS
 
-add_action('post_submitbox_start', 'socialize_submitbox');
-add_action('save_post', 'socialize_save_post');
-add_action('publish_post', 'socialize_publish_post');
+add_action('post_submitbox_start', 'socializr_submitbox');
+add_action('save_post', 'socializr_save_post');
+add_action('publish_post', 'socializr_publish_post');
 
-function socialize_submitbox() {
+function socializr_submitbox() {
     global $post;
     if ($post->post_status == 'publish') return;
     echo "<div class='misc-pub-section'><input type='checkbox' name='share' checked='checked' /> Share on social networks?</div>";
 }
 
-function socialize_save_post($id) {
+function socializr_save_post($id) {
     $enable = isset($_POST['share']) && $_POST['share'] == 'on';
     if ($enable) {
         update_post_meta($id, 'enable_share', 1);
@@ -90,7 +90,7 @@ function socialize_save_post($id) {
     }
 }
 
-function socialize_publish_post($id) {
+function socializr_publish_post($id) {
     global $post;
     $enable = get_post_meta($id, 'enable_share');
     if ($enable && $post->post_status != 'publish') {

@@ -3,7 +3,7 @@
 define('ROOT_DIR', dirname(__FILE__));
 define('PLUGIN_DIR', basename(ROOT_DIR));
 
-define("PLUGIN_ID", "socialize");
+define("PLUGIN_ID", "socializr");
 define("BASE_URL", "http://" . $_SERVER['SERVER_NAME']);
 define("PLUGIN_URL", BASE_URL . "/wp-content/plugins/" . PLUGIN_DIR . "/");
 define("SETTINGS_URL", BASE_URL . "/wp-admin/options-general.php?page=" . PLUGIN_ID);

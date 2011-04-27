@@ -1,6 +1,6 @@
 <?php
 
-abstract class SocializeButton {
+abstract class SocializrButton {
 
     public $_base = '';
     public $_base_label = '';

@@ -1,6 +1,6 @@
 <?php
 
-abstract class Socialize {
+abstract class Socializr {
 
     public abstract function signin();
     public abstract function signout();

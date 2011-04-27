@@ -1,6 +1,6 @@
 <?php
 
-class SocializeWidget extends WP_Widget {
+class SocializrWidget extends WP_Widget {
 
     protected $_options = array(
         'title'        => array('type' => 'text',     'label' => 'Title',             'default' => ''),
